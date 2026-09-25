@@ -12,21 +12,36 @@
   </head>
   <body>
     <div id="toast" class="toast" role="status"></div>
-    <header class="site-header">
+    <section id="authGate" class="auth-gate">
+      <div class="auth-glow"></div>
+      <div class="auth-panel">
+        <p class="kicker">NOVA / Member access</p>
+        <h1>Enter the<br /><em>signal.</em></h1>
+        <p class="auth-copy">Sign in to browse the drop. Admin access is reserved for the store owner.</p>
+        <form id="gateForm" class="login-form">
+          <label>Username<input id="gateUsername" type="text" placeholder="Your username" required /></label>
+          <label>Password<input id="gatePassword" type="password" placeholder="Your password" required /></label>
+          <button class="button button-neon" type="submit">Enter NOVA <span>→</span></button>
+          <p id="gateError" class="error-message hidden">Please enter a username and password.</p>
+        </form>
+        <p class="auth-hint">Admin login: <strong>shyam</strong> / <strong>shyam123</strong></p>
+      </div>
+    </section>
+    <header class="site-header requires-auth hidden">
       <a class="logo" href="#top" aria-label="NOVA home"><span>N</span>OVA<span class="logo-dot">.</span></a>
-      <nav class="main-nav" aria-label="Main navigation"><a class="active" href="#shop">Shop</a><a href="#story">Our signal</a><a href="#admin">Admin</a></nav>
+      <nav class="main-nav" aria-label="Main navigation"><a class="active" href="#shop">Shop</a><a href="#story">Our signal</a><a id="adminNav" class="hidden" href="#admin">Admin</a></nav>
       <div class="header-actions"><button id="loginButton" class="user-button" type="button">Hi, shyam</button><button id="cartButton" class="cart-button" type="button">Bag <span id="cartCount">0</span></button></div>
     </header>
-    <main id="top">
+    <main id="top" class="requires-auth hidden">
       <section class="hero" aria-labelledby="heroTitle"><div class="hero-copy"><p class="kicker">Drop 04 / 2026</p><h1 id="heroTitle">Objects for<br /><em>the next now.</em></h1><p class="hero-description">Curated tech, desk tools, and daily carry with a pulse. Designed for people who refuse default settings.</p><a class="button button-neon" href="#shop">Explore the drop <span>↗</span></a></div><div class="hero-art" aria-hidden="true"><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-disc"><span>NOVA</span><small>04 / 26</small></div><p class="hero-stamp">FUTURE<br />GOODS<br /><span>EST. 2026</span></p></div></section>
       <section id="shop" class="shop-section section-wrap" aria-labelledby="shopTitle"><div class="section-heading"><div><p class="kicker">The current signal</p><h2 id="shopTitle">Shop the drop</h2></div><p class="section-note">Small run. Big energy.<br />Free shipping over $100.</p></div><div class="shop-toolbar"><div id="categoryFilters" class="category-filters" aria-label="Product categories"><button class="filter-chip active" data-category="all" type="button">All objects</button><button class="filter-chip" data-category="desk" type="button">Desk</button><button class="filter-chip" data-category="carry" type="button">Carry</button><button class="filter-chip" data-category="audio" type="button">Audio</button></div><label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search the drop" /></label></div><div id="productGrid" class="product-grid"></div><p id="emptyProducts" class="empty-state hidden">No objects match that signal.</p></section>
       <section id="story" class="story-section section-wrap"><div class="story-mark">N<span>/</span>04</div><div><p class="kicker">Why NOVA exists</p><h2>Useful things,<br /><em>unusual presence.</em></h2></div><p>We find the pieces that make a workspace hum and a commute feel considered. Every object earns its place through function, material, and a little electric character.</p></section>
-      <section id="admin" class="admin-section section-wrap"><div class="section-heading"><div><p class="kicker">Store control</p><h2>Admin console</h2></div><p class="section-note">Add a product to the local catalog.<br />No database setup needed.</p></div><form id="adminForm" class="admin-form"><input id="adminName" type="text" placeholder="Product name" required /><input id="adminPrice" type="number" min="1" placeholder="Price" required /><select id="adminCategory" required><option value="desk">Desk</option><option value="carry">Carry</option><option value="audio">Audio</option></select><input id="adminImage" type="url" placeholder="Image URL (optional)" /><button class="button button-neon" type="submit">Add product</button></form></section>
+      <section id="admin" class="admin-section section-wrap hidden"><div class="section-heading"><div><p class="kicker">Store control</p><h2>Admin console</h2></div><p class="section-note">Add a product to the local catalog.<br />No database setup needed.</p></div><form id="adminForm" class="admin-form"><input id="adminName" type="text" placeholder="Product name" required /><input id="adminPrice" type="number" min="1" placeholder="Price" required /><select id="adminCategory" required><option value="desk">Desk</option><option value="carry">Carry</option><option value="audio">Audio</option></select><input id="adminImage" type="url" placeholder="Image URL (optional)" /><button class="button button-neon" type="submit">Add product</button></form></section>
     </main>
     <aside id="cartDrawer" class="drawer" aria-label="Shopping cart" aria-hidden="true"><div class="drawer-head"><div><p class="kicker">Your selection</p><h2>Shopping bag</h2></div><button id="closeCart" class="icon-button" type="button" aria-label="Close cart">×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-footer"><div><span>Subtotal</span><strong id="cartTotal">$0</strong></div><button id="checkoutButton" class="button button-neon" type="button">Checkout <span>→</span></button></div></aside><div id="drawerBackdrop" class="drawer-backdrop hidden"></div>
     <dialog id="loginDialog" class="modal"><button class="modal-close" data-close-dialog type="button" aria-label="Close">×</button><p class="kicker">Member access</p><h2>Welcome back.</h2><p class="modal-copy">Use your NOVA credentials to keep your bag synced.</p><form id="loginForm" class="login-form"><label>Username<input id="username" type="text" value="shyam" required /></label><label>Password<input id="password" type="password" value="shyam123" required /></label><button class="button button-neon" type="submit">Sign in</button><p id="loginError" class="error-message hidden">Use username shyam and password shyam123.</p></form></dialog>
     <dialog id="productDialog" class="modal product-modal"><button class="modal-close" data-close-dialog type="button" aria-label="Close">×</button><div id="productDetail"></div></dialog><dialog id="successDialog" class="modal success-modal"><p class="success-icon">✓</p><p class="kicker">Order received</p><h2>You are in the future.</h2><p class="modal-copy">Your NOVA order is confirmed. A receipt would be on its way to your inbox.</p><button class="button button-neon" data-close-dialog type="button">Keep exploring</button></dialog>
-    <footer class="site-footer"><span>NOVA / Essential future goods</span><span>Made for the in-between</span><span>© 2026</span></footer>
+    <footer class="site-footer requires-auth hidden"><span>NOVA / Essential future goods</span><span>Made for the in-between</span><span>© 2026</span></footer>
     <script src="script.js"></script>
   </body>
 </html>

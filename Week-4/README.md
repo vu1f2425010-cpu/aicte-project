@@ -4,8 +4,10 @@ NOVA is a fully interactive e-commerce storefront with a neon dark frontend.
 
 ## Login
 
-- Username: shyam
-- Password: shyam123
+- Admin username: shyam
+- Admin password: shyam123
+- Customer users can enter any non-empty username and password.
+- Only the admin login reveals the Admin console and product creation controls.
 
 ## Features
 
