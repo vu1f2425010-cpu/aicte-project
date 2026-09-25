@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="app">
+    <div id="loginScreen" class="auth-screen">
+      <div class="auth-card">
+        <h2>Student Login</h2>
+        <form id="loginForm" class="auth-form">
+          <input id="username" type="text" placeholder="Username" required />
+          <input id="password" type="password" placeholder="Password" required />
+          <button type="submit" class="primary-btn">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="appShell" class="app hidden">
       <aside class="sidebar">
         <div class="brand">
           <h1>CampusFlow</h1>
@@ -26,7 +37,10 @@
             <p class="eyebrow">Overview</p>
             <h2>Student Dashboard</h2>
           </div>
-          <button class="primary-btn">+ New Task</button>
+          <div class="top-actions">
+            <span id="userBadge" class="user-badge"></span>
+            <button id="logoutBtn" class="secondary-btn">Logout</button>
+          </div>
         </header>
 
         <section class="stats-grid">
@@ -51,6 +65,14 @@
         <section class="panel">
           <div class="panel-header">
             <h3>Task Manager</h3>
+          </div>
+
+          <div class="toolbar">
+            <div class="filter-group">
+              <button class="filter-btn active" data-filter="all" type="button">All</button>
+              <button class="filter-btn" data-filter="pending" type="button">Pending</button>
+              <button class="filter-btn" data-filter="completed" type="button">Completed</button>
+            </div>
           </div>
 
           <form id="taskForm" class="task-form">

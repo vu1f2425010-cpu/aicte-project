@@ -90,18 +90,95 @@ nav a:hover {
   font-size: 2rem;
 }
 
-.primary-btn {
+.primary-btn,
+.secondary-btn,
+.filter-btn {
   border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primary-btn {
   background: var(--primary);
   color: white;
   padding: 12px 18px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.2s ease;
 }
 
 .primary-btn:hover {
   background: var(--primary-dark);
+}
+
+.secondary-btn {
+  background: #e5e7eb;
+  color: var(--text);
+  padding: 10px 14px;
+}
+
+.filter-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.filter-btn {
+  background: #eef2ff;
+  color: var(--primary-dark);
+  padding: 8px 12px;
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  color: white;
+}
+
+.auth-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #eef4ff, #f8fafc);
+}
+
+.auth-card {
+  width: min(420px, 90vw);
+  background: white;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.auth-card h2 {
+  margin-top: 0;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-form input {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-badge {
+  background: #eef2ff;
+  color: var(--primary-dark);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 600;
 }
 
 .stats-grid {

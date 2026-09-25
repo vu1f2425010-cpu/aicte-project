@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Upload Feature</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Image Upload Feature</h1>
+
+      <form id="uploadForm" class="upload-form">
+        <input id="imageInput" type="file" accept="image/*" required />
+        <button type="submit" class="primary-btn">Upload Image</button>
+      </form>
+
+      <div id="previewBox" class="preview-box hidden">
+        <img id="previewImage" src="" alt="Uploaded preview" />
+      </div>
+
+      <div class="gallery">
+        <h2>Uploaded Images</h2>
+        <ul id="galleryList" class="gallery-list"></ul>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

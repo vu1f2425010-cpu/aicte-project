@@ -1,11 +1,20 @@
 const taskForm = document.getElementById('taskForm');
 const taskInput = document.getElementById('taskInput');
 const taskList = document.getElementById('taskList');
+const loginForm = document.getElementById('loginForm');
+const loginScreen = document.getElementById('loginScreen');
+const appShell = document.getElementById('appShell');
+const userBadge = document.getElementById('userBadge');
+const logoutBtn = document.getElementById('logoutBtn');
+const filterButtons = document.querySelectorAll('.filter-btn');
 
 const totalTasksEl = document.getElementById('totalTasks');
 const completedTasksEl = document.getElementById('completedTasks');
 const pendingTasksEl = document.getElementById('pendingTasks');
 const progressValueEl = document.getElementById('progressValue');
+
+let currentUser = JSON.parse(localStorage.getItem('studentAuth')) || null;
+let currentFilter = 'all';
 
 let tasks = JSON.parse(localStorage.getItem('studentTasks')) || [
   { id: 1, text: 'Complete AI assignment', completed: false },
@@ -15,6 +24,20 @@ let tasks = JSON.parse(localStorage.getItem('studentTasks')) || [
 
 function saveTasks() {
   localStorage.setItem('studentTasks', JSON.stringify(tasks));
+}
+
+function saveAuth(user) {
+  localStorage.setItem('studentAuth', JSON.stringify(user));
+}
+
+function getVisibleTasks() {
+  if (currentFilter === 'pending') {
+    return tasks.filter(task => !task.completed);
+  }
+  if (currentFilter === 'completed') {
+    return tasks.filter(task => task.completed);
+  }
+  return tasks;
 }
 
 function updateDashboard() {
@@ -30,13 +53,15 @@ function updateDashboard() {
 }
 
 function renderTasks() {
-  if (tasks.length === 0) {
-    taskList.innerHTML = '<li class="empty-state">No tasks yet. Add one to get started.</li>';
+  const visibleTasks = getVisibleTasks();
+
+  if (visibleTasks.length === 0) {
+    taskList.innerHTML = '<li class="empty-state">No tasks in this filter.</li>';
     updateDashboard();
     return;
   }
 
-  taskList.innerHTML = tasks
+  taskList.innerHTML = visibleTasks
     .map(
       task => `
         <li class="task-item ${task.completed ? 'completed' : ''}" data-id="${task.id}">
@@ -54,6 +79,47 @@ function renderTasks() {
 
   updateDashboard();
 }
+
+function showApp() {
+  loginScreen.classList.add('hidden');
+  appShell.classList.remove('hidden');
+  userBadge.textContent = `Welcome, ${currentUser?.name || 'Student'}`;
+  renderTasks();
+}
+
+function showLogin() {
+  appShell.classList.add('hidden');
+  loginScreen.classList.remove('hidden');
+  loginForm.reset();
+}
+
+loginForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const name = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value.trim();
+
+  if (!name || !password) {
+    return;
+  }
+
+  currentUser = { name, password };
+  saveAuth(currentUser);
+  showApp();
+});
+
+logoutBtn.addEventListener('click', () => {
+  currentUser = null;
+  localStorage.removeItem('studentAuth');
+  showLogin();
+});
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    currentFilter = button.dataset.filter;
+    filterButtons.forEach(btn => btn.classList.toggle('active', btn === button));
+    renderTasks();
+  });
+});
 
 taskForm.addEventListener('submit', event => {
   event.preventDefault();
@@ -101,4 +167,8 @@ taskList.addEventListener('change', event => {
   renderTasks();
 });
 
-renderTasks();
+if (currentUser) {
+  showApp();
+} else {
+  showLogin();
+}
