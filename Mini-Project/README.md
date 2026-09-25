@@ -1,26 +1,25 @@
 # Mini Project
 
-This folder contains a working mini project: a Student Task Manager dashboard.
+## Task Manager Application
 
-## Project files
+- A complete task tracking web app with user login and task filtering.
+- Frontend in React, backend in Express, and MongoDB for storage.
 
-- `index.html` — main page
-- `style.css` — dashboard styling
-- `script.js` — task logic and local storage
-- `docs/` — documentation and project notes
-- `assets/` — images, icons, and other support files
+## Learning Outcome
 
-## Features
+Students gain end-to-end experience of connecting frontend and backend with a database.
 
-- Add tasks
-- Mark tasks complete
-- Delete tasks
-- View task statistics
-- Save data in the browser using localStorage
+## Project Files
 
-## Run it
+- `index.html` — basic frontend starter
+- `style.css` — styling
+- `script.js` — task logic
+- `docs/` — project notes
+- `assets/` — UI assets
 
-Open `index.html` directly in a browser or run:
+## Run the project
+
+Open `index.html` directly in a browser, or run:
 
 ```bash
 cd "c:/Users/shyam/OneDrive/Desktop/aicte/Mini-Project"

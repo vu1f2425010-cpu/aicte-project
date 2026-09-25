@@ -1,14 +1,23 @@
-# Assignment 1: To-Do List REST API
+# Assignment 1: Full Stack To-Do Application
 
-This project implements a REST API for managing tasks.
+## Requirements
 
-## Features
+- Connect Week 2 API with React frontend.
+- Implement authentication, CRUD functionality, and routing.
 
-- Create a task
-- Read all tasks
-- Update a task
-- Delete a task
-- MongoDB persistence with Mongoose
+## Project Goal
+Build a full-stack to-do application where users can sign in, create tasks, manage tasks, and navigate between pages using frontend routing.
+
+## Suggested Stack
+
+- Frontend: React
+- Backend: Express
+- Database: MongoDB
+- Authentication: JWT
+
+## Folder Use
+
+Keep the frontend code, backend code, and documentation inside this assignment folder as needed.
 
 ## Run
 
@@ -18,11 +27,4 @@ npm install
 npm start
 ```
 
-## API endpoints
-
-- GET /api/tasks
-- POST /api/tasks
-- PUT /api/tasks/:id
-- DELETE /api/tasks/:id
-
-Use Postman to test the endpoints.
+Use Postman or the frontend app to test the full flow.

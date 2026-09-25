@@ -1,14 +1,23 @@
-# Assignment 2: User Authentication API
+# Assignment 2: Image Upload Feature
 
-This project implements secure user authentication.
+## Requirements
 
-## Features
+- Create a file upload endpoint using Multer.
+- Integrate with React to preview and display uploaded images.
 
-- User registration
-- User login
-- Password hashing with bcryptjs
-- JWT-based protected routes
-- MongoDB persistence
+## Project Goal
+Build a feature that allows users to upload images from the frontend, save them on the backend, and display them in the application.
+
+## Suggested Stack
+
+- Frontend: React
+- Backend: Express
+- File upload: Multer
+- Storage: server folder or cloud storage
+
+## Folder Use
+
+Keep all upload-related frontend, backend, and documentation files inside this assignment folder.
 
 ## Run
 
@@ -18,10 +27,4 @@ npm install
 npm start
 ```
 
-## API endpoints
-
-- POST /api/auth/register
-- POST /api/auth/login
-- GET /api/auth/profile
-
-Use Postman to test the endpoints and send the JWT in the Authorization header.
+Use Postman or the React frontend to test the upload flow.
