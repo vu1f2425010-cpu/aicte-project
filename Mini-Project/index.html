@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Task Manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <h1>CampusFlow</h1>
+        </div>
+        <nav>
+          <a href="#" class="active">Dashboard</a>
+          <a href="#">Assignments</a>
+          <a href="#">Calendar</a>
+          <a href="#">Reports</a>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Overview</p>
+            <h2>Student Dashboard</h2>
+          </div>
+          <button class="primary-btn">+ New Task</button>
+        </header>
+
+        <section class="stats-grid">
+          <div class="card stat-card">
+            <span>Total Tasks</span>
+            <strong id="totalTasks">0</strong>
+          </div>
+          <div class="card stat-card">
+            <span>Completed</span>
+            <strong id="completedTasks">0</strong>
+          </div>
+          <div class="card stat-card">
+            <span>Pending</span>
+            <strong id="pendingTasks">0</strong>
+          </div>
+          <div class="card stat-card">
+            <span>Progress</span>
+            <strong id="progressValue">0%</strong>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h3>Task Manager</h3>
+          </div>
+
+          <form id="taskForm" class="task-form">
+            <input id="taskInput" type="text" placeholder="Add a new task..." required />
+            <button type="submit" class="primary-btn">Add</button>
+          </form>
+
+          <ul id="taskList" class="task-list"></ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
